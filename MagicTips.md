@@ -1,4 +1,14 @@
 
+- [My favourite Aliases](#my-favourite-aliases)
+- [Alertmanager updates on prometheus operator; I always forget this one,](#alertmanager-updates-on-prometheus-operator--i-always-forget-this-one-)
+- [Some other kubectl Magic](#some-other-kubectl-magic)
+- [Virtually hog memory to test memory alerts](#virtually-hog-memory-to-test-memory-alerts)
+- [Quickly set proxy on VM with no Vim](#quickly-set-proxy-on-vm-with-no-vim)
+- [init container for Checking Whether grafana is up or not](#init-container-for-checking-whether-grafana-is-up-or-not)
+- [Job which seeds Grafana Dashboard](#job-which-seeds-grafana-dashboard)
+- [Create metric using file based exporter](#create-metric-using-file-based-exporter)
+- [Searching a User in LDAP](#searching-a-user-in-ldap)
+
 
 ## My favourite Aliases
 ```sh
