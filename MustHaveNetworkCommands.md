@@ -1,4 +1,9 @@
-# IPTables is a saviour
+## Table Of Content
+- [IPTables is a saviour](#iptables-is-a-saviour)
+- [Route commands (Should be replaced by ip -r)](#route-commands--should-be-replaced-by-ip--r-)
+- [Show cgroups](#show-cgroups)
+
+#### IPTables is a saviour
 ```sh
 iptables -vL -t filter
 iptables -vL -t nat
@@ -7,14 +12,14 @@ iptables -vL -t raw
 iptables -vL -t security
 ```
 
-# Route commands (Should be replaced by ip -r)
+#### Route commands (Should be replaced by ip -r)
 ```sh
 route
 netstat -tlpn
 ip route list
 ```
 
-# SHow cgroups
+#### Show cgroups
 ```sh
 cat /proc/cgroups
 ```
