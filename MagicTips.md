@@ -3,15 +3,15 @@
 ## My favourite Aliases
 ```sh
 alias k=kubectl
-alias k=kubectl
 alias ks="kubectl -n kube-system"
 kn(){ kubectl -n $ns "$@";}
 ka(){ kubectl "$@" --all-namespaces;}
 export KUBECONFIG=~/kube-config/devcluster.conf 
-kn get secret alertmanager-main -o "jsonpath={.data['alertmanager\.yaml']}" | base64 -D
 ```
 ## Alertmanager updates on prometheus operator; I always forget this one,
 ```sh
+kn get secret alertmanager-main -o "jsonpath={.data['alertmanager\.yaml']}" | base64 -D
+
 kn create secret generic alertmanager-main --from-literal=alertmanager.yaml="$(< alertmanager.yaml)" --dry-run -oyaml | 
 kn replace secret --filename=-
 ```
