@@ -1,6 +1,6 @@
-
+#### Table of Content
 - [My favourite Aliases](#my-favourite-aliases)
-- [Alertmanager updates on prometheus operator; I always forget this one,](#alertmanager-updates-on-prometheus-operator--i-always-forget-this-one-)
+- [Alertmanager updates on prometheus operator](#alertmanager-updates-on-prometheus-operator--i-always-forget-this-one-)
 - [Some other kubectl Magic](#some-other-kubectl-magic)
 - [Virtually hog memory to test memory alerts](#virtually-hog-memory-to-test-memory-alerts)
 - [Quickly set proxy on VM with no Vim](#quickly-set-proxy-on-vm-with-no-vim)
@@ -18,7 +18,7 @@ kn(){ kubectl -n $ns "$@";}
 ka(){ kubectl "$@" --all-namespaces;}
 export KUBECONFIG=~/kube-config/devcluster.conf 
 ```
-## Alertmanager updates on prometheus operator; I always forget this one,
+## Alertmanager updates on prometheus operator
 ```sh
 kn get secret alertmanager-main -o "jsonpath={.data['alertmanager\.yaml']}" | base64 -D
 
