@@ -1,7 +1,3 @@
 # dev-test-anu
 
-K8S Controllers--> 
-Level sec Controller
-Edge Trigger Controller
-
-INformer --> cache + Notifications On Handlers
+This Repo containe my bashrc and other Magic Scripts which i want to use across any computer.
