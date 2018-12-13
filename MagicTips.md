@@ -16,6 +16,18 @@ kn create secret generic alertmanager-main --from-literal=alertmanager.yaml="$(<
 kn replace secret --filename=-
 ```
 
+## Some other kubectl Magic
+```sh
+# Run deployment
+$ kubectl run nginx --replicas=2 --image=nginx
+# Expose Deployment , i.e. create svc
+$ kubectl expose deployment nginx --port=80
+# Test by running a different Pod
+$ kubectl run access --rm -ti --image busybox /bin/sh
+# Access the service 
+$ wget -q nginx -O -
+```
+
 ## Virtually hog memory to test memory alerts
 ```sh
 dd if=/dev/zero of=/tmp/hd-fillup.zeros bs=1G count=50
