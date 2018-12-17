@@ -1,6 +1,6 @@
 ## Table Of Content
 - [IPTables is a saviour](#iptables-is-a-saviour)
-- [Route commands (Should be replaced by ip -r)](#route-commands--should-be-replaced-by-ip--r-)
+- [Route commands)](#route-commands)
 - [Show cgroups](#show-cgroups)
 - [Some More Terms Used in Networking](#Some-More-Terms-Used-in-Networking)
 
@@ -13,9 +13,9 @@ iptables -vL -t raw
 iptables -vL -t security
 ```
 
-#### Route commands (Should be replaced by ip -r)
+#### Route commands
 ```sh
-route
+route (should be replaced by ip -r)
 netstat -tlpn
 ip route list
 ipset list
