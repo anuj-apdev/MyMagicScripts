@@ -2,6 +2,7 @@
 - [IPTables is a saviour](#iptables-is-a-saviour)
 - [Route commands (Should be replaced by ip -r)](#route-commands--should-be-replaced-by-ip--r-)
 - [Show cgroups](#show-cgroups)
+- [Some More Terms Used in Networking](#Some-More-Terms-Used-in-Networking)
 
 #### IPTables is a saviour
 ```sh
