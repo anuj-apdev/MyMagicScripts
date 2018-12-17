@@ -17,10 +17,14 @@ iptables -vL -t security
 route
 netstat -tlpn
 ip route list
+ipset list
+ip xfrm <command>
+brctl
+brctl showmacs <bridge network name>
+bridge
 ```
 
 #### Show cgroups
 ```sh
 cat /proc/cgroups
 ```
-
