@@ -20,6 +20,7 @@ route (should be replaced by ip -r)
 netstat -tlpn
 ip route list
 ipset list
+tcpdump
 ip xfrm <command>
 brctl
 brctl showmacs <bridge network name>
@@ -44,4 +45,50 @@ BFP -- Berkley Packet Filter (A new Linux kernel technology, which enables the d
  - the source IP and destination IP (“Layer 3”)
  - the port and other TCP/UDP information (“Layer 4”)
  - the contents of your HTTP packet like GET / (“Layer 7”)
+ 
+### Types of Encapsulations
+- IP-in-IP
+ip-in-ip encapsulation just slaps on an extra IP header on top of your old IP header. 
+```sh
+MAC:  11:11:11:11:11:11
+IP: 172.9.9.9
+IP: 10.4.4.4
+TCP stuff
+HTTP stuff
+```
+
+- vxLan
+vxlan encapsulation takes your whole packet (including the MAC address) and wraps it inside a UDP packet.
+```sh
+MAC address: 11:11:11:11:11:11
+IP: 172.9.9.9
+UDP port 8472 (the "vxlan port")
+MAC address: ab:cd:ef:12:34:56
+IP: 10.4.4.4
+TCP port 80
+HTTP stuff
+```
+
+
+### Some Table rerouting demo
+What if I had a packet for the container 10.4.4.4 but I actually wanted it to go to the computer 172.23.1.1?
+Change Route Table
+```sh
+sudo ip route add 10.4.4.0/24 via 172.23.1.1 dev eth0
+
+```
+
+#### Set up a new network interface with encapsulation configured.
+[Tunneling Basics](http://www.linux-admins.net/2010/09/tunneling-ipip-and-gre-encapsulation.html)
+```sh
+sudo ip tunnel add mytun mode ipip remote 172.9.9.9 local 10.4.4.4 ttl 255
+sudo ifconfig mytun 10.42.1.1
+```
+
+#### Then set up a route table, but tell Linux to route the packet with your new magical encapsulation network interface.
+
+```sh
+sudo route add -net 10.42.2.0/24 dev mytun
+sudo route list 
+```
 
