@@ -28,3 +28,11 @@ bridge
 ```sh
 cat /proc/cgroups
 ```
+
+### Some More Terms Used in Networking
+NAT -- Network Address TRanslation
+SNAT -- Source IP Address NAT
+DNAT -- Destination IP Address NAT
+netns -- Network Namespaces
+netfilter -- A Kernel Module which applies firlter on routing rules. It has a User Mode utility iptables to configura this
+BFP -- Berkley Packet Filter (A new Linux kernel technology, which enables the dynamic insertion of powerful security visibility and control logic within Linux itself)
