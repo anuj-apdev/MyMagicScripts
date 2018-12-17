@@ -39,6 +39,7 @@ DNAT -- Destination IP Address NAT
 netns -- Network Namespaces
 netfilter -- A Kernel Module which applies firlter on routing rules. It has a User Mode utility iptables to configura this
 BFP -- Berkley Packet Filter (A new Linux kernel technology, which enables the dynamic insertion of powerful security visibility and control logic within Linux itself)
+BGP -- BGP (Border Gateway Protocol) is protocol that manages how packets are routed across the internet through the exchange of routing and reachability information between edge routers. BGP directs packets between autonomous systems (AS) -- networks managed by a single enterprise or service provider.
 
 ### Most used Network OSI Layers and their Usages
  - the MAC address this packet should go to (“Layer 2”)
