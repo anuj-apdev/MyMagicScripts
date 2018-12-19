@@ -1,13 +1,11 @@
 ## Building your own container w/o docker
+#### - Lets start with root on our system
 
 ```sh
 cd /btrfs
 sudo -s
-```
 That is an empty dir
-
-#### make sure mount points are private
-```sh
+# make sure mount points are private
 mount --make-private
 # Create dir for img and containers
 mkdir -p images containers
@@ -67,8 +65,8 @@ cd /btrfs
 pivot_root . oldroot/
 cd /
 mount -t proc node /proc
+# List processes and mounts
 ps
-
 mount
 # Still have tons of mounts from system
 umount -a
@@ -79,11 +77,11 @@ umount -l /oldroot/
 mount
 # Now just one mount
 
-# Now network
+# Now Lets check the network
 ping 4.2.2.1
 ```
 
-#Goto host
+#### - Go back to host terminal
 ```sh
 sudo -i
 # Find PD of container
@@ -94,26 +92,22 @@ CPID=6902
 ip link add name h6902 type veth peer name c6902
 ```
 
-# back to container
+#### - Lets switch back to Container
 ```sh
 ifconfig
 # we have network
 ```
-# back to host
+#### - Again back to host
 
 ```sh
 ip link set c$CPID netns $CPID
-# now new interface showed up in container
-ifconfig -a
-```
-
-#### at Guest
-
-```sh
 ip link set h$CPID master docker0 up
 ```
-#### in Contaner
+
+#### - Switch to Contaner
 ```sh
+# now new interface showed up in container
+ifconfig -a
 # up the network
 ip link set lo up
 # set name of network as eth0, so it will look like ethernet network to container
@@ -130,7 +124,7 @@ ping 172.17.42.1
 # But can ping machine 
 ping 172.17.0.1
 ```
-#### Guest System
+#### Switch to host System
 ```sh
 ip link ls
 ip adr ls dev docker0 
