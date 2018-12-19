@@ -1,5 +1,5 @@
 ## Building your own container w/o docker
-#### - Lets start with root on our system
+- #### Lets start with root on our system
 
 ```sh
 cd /btrfs
@@ -81,7 +81,7 @@ mount
 ping 4.2.2.1
 ```
 
-#### - Go back to host terminal
+- #### Go back to host terminal
 ```sh
 sudo -i
 # Find PD of container
@@ -92,19 +92,19 @@ CPID=6902
 ip link add name h6902 type veth peer name c6902
 ```
 
-#### - Lets switch back to Container
+- #### Lets switch back to Container
 ```sh
 ifconfig
 # we have network
 ```
-#### - Again back to host
+- #### Again back to host
 
 ```sh
 ip link set c$CPID netns $CPID
 ip link set h$CPID master docker0 up
 ```
 
-#### - Switch to Contaner
+- #### Switch to Contaner
 ```sh
 # now new interface showed up in container
 ifconfig -a
@@ -124,7 +124,7 @@ ping 172.17.42.1
 # But can ping machine 
 ping 172.17.0.1
 ```
-#### Switch to host System
+- #### Switch to host System
 ```sh
 ip link ls
 ip adr ls dev docker0 
@@ -133,6 +133,7 @@ ip adr ls dev docker0
 exec chroot / sh
 # Complicated handoff
 ```
+
 ## Haven't talked about following
 ===========
 - cgroup
