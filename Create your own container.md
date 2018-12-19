@@ -1,11 +1,12 @@
-Building your own container w/o docker
+## Building your own container w/o docker
+
 ```sh
 cd /btrfs
 sudo -s
 ```
 That is an empty dir
 
-# make sure mount points are private
+#### make sure mount points are private
 ```sh
 mount --make-private
 # Create dir for img and containers
@@ -24,10 +25,10 @@ touch containers/tupperwre/THIS_IS_TUPPERWARE
 ls containers/tupperware
 
 chroot contaiers/tupperware sh
-# I this apline container
+# Now we are In this apline container
 exit
 
-# use NS (All except user)
+# use NS (All namespaces except user)
 unshare --mount --uts --ipc --net --pid --fork bash
 # Above commands doesn output anthing
 hostname tupperware
@@ -80,7 +81,10 @@ mount
 
 # Now network
 ping 4.2.2.1
+```
+
 #Goto host
+```sh
 sudo -i
 # Find PD of container
 pidof unshare
@@ -88,20 +92,28 @@ pidof unshare
 CPID=6902
 # Peer interfaces
 ip link add name h6902 type veth peer name c6902
+```
 
 # back to container
+```sh
 ifconfig
 # we have network
-
+```
 # back to host
+
+```sh
 ip link set c$CPID netns $CPID
 # now new interface showed up in container
 ifconfig -a
+```
 
-# at Guest
+#### at Guest
+
+```sh
 ip link set h$CPID master docker0 up
-
-# in Contaner
+```
+#### in Contaner
+```sh
 # up the network
 ip link set lo up
 # set name of network as eth0, so it will look like ethernet network to container
@@ -117,8 +129,9 @@ ping 172.17.42.1
 
 # But can ping machine 
 ping 172.17.0.1
-
-# Guest System
+```
+#### Guest System
+```sh
 ip link ls
 ip adr ls dev docker0 
 
@@ -126,7 +139,7 @@ ip adr ls dev docker0
 exec chroot / sh
 # Complicated handoff
 ```
-#### Haven't talked about following
+## Haven't talked about following
 ===========
 - cgroup
 - devices
