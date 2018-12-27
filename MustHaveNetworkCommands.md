@@ -93,3 +93,4 @@ sudo route add -net 10.42.2.0/24 dev mytun
 sudo route list 
 ```
 
+[tcpdump](https://jvns.ca/blog/2017/04/29/new-zine--let-s-learn-tcpdump/)
