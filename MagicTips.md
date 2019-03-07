@@ -25,6 +25,81 @@ kn get secret alertmanager-main -o "jsonpath={.data['alertmanager\.yaml']}" | ba
 kn create secret generic alertmanager-main --from-literal=alertmanager.yaml="$(< alertmanager.yaml)" --dry-run -oyaml | 
 kn replace secret --filename=-
 ```
+## kubectl commands with advanced filters 
+```sh
+# Sort output of get pod command
+kubectl get po --all-namespaces -owide --sort-by=.metadata.creationTimestamp
+
+# Get Literal values inside a secret
+kubectl -n monitoring get secrets blackbox-scrape-configs -o go-template='{{ range $k, $v := .data }}{{ $v | base64decode}}{{"\n"}}{{end}}'
+
+# To get All Services with Nodeport Values
+kubectl get --all-namespaces svc -o json | jq -r '.items[] | [.metadata.name,([.spec.ports[].nodePort | tostring ] | join("|"))] | @csv'
+
+# Get all ServiceAccounts
+kubectl get rolebindings --all-namespaces -o go-template='{{range .items}}{{println}}{{range .subjects}}{{if eq .kind "ServiceAccount"}}{{.namespace}}::{{.name}} {{end}}{{end}}{{end}}'
+
+# For each pod, list whether it containers run on a read-only root filesystem or not:
+
+kubectl get pods --all-namespaces -o go-template --template='{{range .items}}{{.metadata.name}}{{"\n"}}{{range .spec.containers}}    read-only: {{if .securityContext.readOnlyRootFilesystem}}{{printf "\033[32m%t\033[0m" .securityContext.readOnlyRootFilesystem}} {{else}}{{printf "\033[91m%s\033[0m" "false"}}{{end}} ({{.name}}){{"\n"}}{{end}}{{"\n"}}{{end}}'
+
+# Getting not running pods
+kubectl get po -a --all-namespaces -o json --field-selector="status.phase!=Running"
+
+# Restarting(Deleting) not running pods
+kubectl get po -a --all-namespaces -o json --field-selector="status.phase!=Running" | jq  '.items[]  | "kubectl delete po \(.metadata.name) --n \(.metadata.namespace)"' | xargs -n 1 bash -c
+
+#Get sorted list of nodes with respect to Memory Capacity.
+
+kubectl get no -o json | jq -r '.items | sort_by(.status.capacity.memory)[]|[.metadata.name,.status.capacity.memory]| @tsv'
+
+# Get pod on specific Node
+node=node3
+kubectl get po --all-namespaces  -o json | jq -r '.items | sort_by(.spec.nodeName)[]|select(.spec.nodeName=="$node")|[.metadata.name,.spec.nodeName]| @tsv'
+
+# List PV's
+kubectl get pv -o json | jq -r '.items | sort_by(.spec.capacity.storage)[]|[.metadata.name,.spec.capacity.storage]| @tsv'
+
+
+```
+## Create multiple YAML objects from stdin
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sleep
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    args:
+    - sleep
+    - "1000000"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-sleep-less
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    args:
+    - sleep
+    - "1000"
+EOF
+
+## Create a secret with several keys
+cat <<EOF | kubectl create -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  password: $(echo -n "s33msi4" | base64 -w0)
+  username: $(echo -n "jane" | base64 -w0)
+EOF
 
 ## Some other kubectl Magic
 ```sh
@@ -64,7 +139,7 @@ EOF
 echo \"waiting for endpoints...\"; 
 while true; 
 	set endpoints \
-		(curl -s --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
+		$(curl -s --cacert /var/run/secrets/kubernetes.io/serviceaccount/ca.crt \
 		--header \"Authorization: Bearer \"(cat /var/run/secrets/kubernetes.io/serviceaccount/token) \
 		https://kubernetes.default.svc/api/v1/namespaces/monitoring/endpoints/grafana); 
 
