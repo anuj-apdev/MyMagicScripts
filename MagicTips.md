@@ -40,29 +40,29 @@ kubectl get --all-namespaces svc -o json | jq -r '.items[] | [.metadata.name,([.
 kubectl get rolebindings --all-namespaces -o go-template='{{range .items}}{{println}}{{range .subjects}}{{if eq .kind "ServiceAccount"}}{{.namespace}}::{{.name}} {{end}}{{end}}{{end}}'
 
 # For each pod, list whether it containers run on a read-only root filesystem or not:
-
+# This is a one lines security check, All pods having write access to root filesystem might cause security issues
 kubectl get pods --all-namespaces -o go-template --template='{{range .items}}{{.metadata.name}}{{"\n"}}{{range .spec.containers}}    read-only: {{if .securityContext.readOnlyRootFilesystem}}{{printf "\033[32m%t\033[0m" .securityContext.readOnlyRootFilesystem}} {{else}}{{printf "\033[91m%s\033[0m" "false"}}{{end}} ({{.name}}){{"\n"}}{{end}}{{"\n"}}{{end}}'
 
-# Getting not running pods
+# Getting list of "not running" pods
 kubectl get po -a --all-namespaces -o json --field-selector="status.phase!=Running"
 
 # Restarting(Deleting) not running pods
 kubectl get po -a --all-namespaces -o json --field-selector="status.phase!=Running" | jq  '.items[]  | "kubectl delete po \(.metadata.name) --n \(.metadata.namespace)"' | xargs -n 1 bash -c
 
 #Get sorted list of nodes with respect to Memory Capacity.
-
 kubectl get no -o json | jq -r '.items | sort_by(.status.capacity.memory)[]|[.metadata.name,.status.capacity.memory]| @tsv'
 
 # Get pod on specific Node
 node=node3
 kubectl get po --all-namespaces  -o json | jq -r '.items | sort_by(.spec.nodeName)[]|select(.spec.nodeName=="$node")|[.metadata.name,.spec.nodeName]| @tsv'
 
-# List PV's
+# List PV's with storage capacity and details
 kubectl get pv -o json | jq -r '.items | sort_by(.spec.capacity.storage)[]|[.metadata.name,.spec.capacity.storage]| @tsv'
 
 
 ```
 ## Create multiple YAML objects from stdin
+```sh
 cat <<EOF | kubectl create -f -
 apiVersion: v1
 kind: Pod
@@ -100,6 +100,7 @@ data:
   password: $(echo -n "s33msi4" | base64 -w0)
   username: $(echo -n "jane" | base64 -w0)
 EOF
+```
 
 ## Some other kubectl Magic
 ```sh
