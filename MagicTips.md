@@ -1,6 +1,8 @@
-#### Table of Content
++ [Table of Content](#table-of-content)
 - [My favourite Aliases](#my-favourite-aliases)
-- [Alertmanager updates on prometheus operator](#alertmanager-updates-on-prometheus-operator--i-always-forget-this-one-)
+- [Alertmanager updates on prometheus operator](#alertmanager-updates-on-prometheus-operator)
+- [kubectl commands with advanced filters](#kubectl-commands-with-advanced-filters)
+- [Create multiple YAML objects from stdin](#create-multiple-yaml-objects-from-stdin)
 - [Some other kubectl Magic](#some-other-kubectl-magic)
 - [Virtually hog memory to test memory alerts](#virtually-hog-memory-to-test-memory-alerts)
 - [Quickly set proxy on VM with no Vim](#quickly-set-proxy-on-vm-with-no-vim)
