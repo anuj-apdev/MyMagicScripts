@@ -1,4 +1,4 @@
-Table Of Content
+Table of Content
 =================
 
 - [My favourite Aliases](#my-favourite-aliases)
