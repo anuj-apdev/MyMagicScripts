@@ -1,4 +1,3 @@
-+ [Table of Content](#table-of-content)
 - [My favourite Aliases](#my-favourite-aliases)
 - [Alertmanager updates on prometheus operator](#alertmanager-updates-on-prometheus-operator)
 - [kubectl commands with advanced filters](#kubectl-commands-with-advanced-filters)
@@ -10,7 +9,6 @@
 - [Job which seeds Grafana Dashboard](#job-which-seeds-grafana-dashboard)
 - [Create metric using file based exporter](#create-metric-using-file-based-exporter)
 - [Searching a User in LDAP](#searching-a-user-in-ldap)
-
 
 ## My favourite Aliases
 ```sh
