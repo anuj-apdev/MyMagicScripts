@@ -128,7 +128,11 @@ df -h . ; dd of=biggerfile bs=1 seek=5000G count=0 ; ls -log biggerfile ; df -h 
 memhog
 ```
 ### Checking free space on device
-```sudo find /sys/fs/cgroup/memory | wc -l 2946
+```
+# Total
+sudo find /sys/fs/cgroup/memory | wc -l 2946
+# Only by a process
+sudo find /sys/fs/cgroup/memory/docker | wc -l
 '''
 
 ## Quickly set proxy on VM with no Vim
