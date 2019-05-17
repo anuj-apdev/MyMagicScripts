@@ -127,6 +127,9 @@ dd of=bigfile bs=1 seek=50G count=0
 df -h . ; dd of=biggerfile bs=1 seek=5000G count=0 ; ls -log biggerfile ; df -h .
 memhog
 ```
+### Checking free space on device
+```sudo find /sys/fs/cgroup/memory | wc -l 2946
+'''
 
 ## Quickly set proxy on VM with no Vim
 ```sh
