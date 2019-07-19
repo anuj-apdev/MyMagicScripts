@@ -1,4 +1,4 @@
-## Building your own container w/o docker
+## Building your own container without using any vendor tool like docker
 - #### Lets start with root on our system
 
 ```sh
