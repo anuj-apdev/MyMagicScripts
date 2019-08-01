@@ -15,15 +15,15 @@
 - zb -- Move current line w/ cursor to the bottom of screen
 - 90% -- Move cursor to 90% of file
 
-e -- move to end of word
-ge -- reverse of above
-^ or _ -- move to begining of line, non whitespace.
-g_ -- reverse of above, i.e. end of line.
-]m -- Go to end of method
-% -- Matching brackets
-+ -- Go down to line start
-- -- Go up to line start
-0,$ -- move at begining, end of a line
+- `e` -- move to end of word
+- `ge `-- reverse of above
+- `^` or _ -- move to begining of line, non whitespace.
+- `g_` -- reverse of above, i.e. end of line.
+- `]m` -- Go to end of method
+- `%` -- Matching brackets
+- `+`` -- Go down to line start
+- `- -- Go up to line start
+- `0,$` -- move at begining, end of a line
 
 ## Marks
 mm -- mark m
@@ -56,39 +56,38 @@ Ctrl+w - s -- vertical split
 
 ## Insert Mode Completion 
 --- 
-Must be in insert Mode (i,a,c etc)
-Ctrl+n (Also Ctrl+p) -- Auto completion of words
-Ctrl+x, Ctrl+f -- Pops a list of filename
-Ctrl+x s -- Spell check/suggestions
-Ctrl+x Ctrl+v -- Command Mode suggestion/completion, on VIM commands.
-Ctrl+x Ctrl+l -- Auto complete sentences
+- Must be in insert Mode (i,a,c etc)
+- Ctrl+n (Also Ctrl+p) -- Auto completion of words
+- Ctrl+x, Ctrl+f -- Pops a list of filename
+- Ctrl+x s -- Spell check/suggestions
+- Ctrl+x Ctrl+v -- Command Mode suggestion/completion, on VIM commands.
+- Ctrl+x Ctrl+l -- Auto complete sentences
 
-Command Mode shortcuts
-Ctrl+r = -- evaluate exxpression (Mathematical)
-Ctrl+r " -- Paste currently copied text
+### Command Mode shortcuts
+- Ctrl+r = -- evaluate exxpression (Mathematical)
+- Ctrl+r " -- Paste currently copied text
 
-## Mathematics
----
-Ctrl_A -- increase number under cursor
-Ctrl_X -- decrease number under cursor
-qaYpCtrl_Aq -- Copy pastes an increasing number below
-100@a -- creates a list of increasing numbers
+### Mathematics
+- Ctrl_A -- increase number under cursor
+- Ctrl_X -- decrease number under cursor
+- qaYpCtrl_Aq -- Copy pastes an increasing number below
+- 100@a -- creates a list of increasing numbers
 
+## tags and paragraphs
+- cIt -- change insode (html) tag
+- cI{ -- change Inside Curly braces
+- cAt -- change Around the current tag.
+- cI" -- Change Inside Quotation marks.
+- cI< -- change inside the < tag
+- vI{ -- Visualize inside Paranthesis
+- dAt -- delete the Tag
+- vip -- select a paragraph
+- vip /sort -- selects a paragraph and sorts the lines. for eg sort a table
 
-cIt -- 
-cI{ -- change Inside Curly braces
-cAt -- change Around the current tag.
-cI" -- Change Inside Quotation marks.
-cI< -- change inside the < tag
-vI{ -- Visualize inside Paranthesis
-dAt -- delete the Tag
-vip -- select a paragraph
-vip /sort -- selects a paragraph and sorts the lines. for eg sort a table
-
-ctF -- Change (remove) till next F occurs from cursor
-cf' -- Change (delete) everything from cursor to next singlequote '
-c/oth -- Search oth and delete everything till that oth from current cursor
-c6j -- Change (delete) 6 lines down.
+- ctF -- Change (remove) till next F occurs from cursor
+- cf' -- Change (delete) everything from cursor to next singlequote '
+- c/oth -- Search oth and delete everything till that oth from current cursor
+- c6j -- Change (delete) 6 lines down.
 
 f, F, t, T, /, ? -- Searches occurence. 
 f -- takes to occurence
@@ -100,9 +99,9 @@ T -- Same as above, inverse order
 
 d} -- delete entire method/paragraph, blanc line deliniated
 % -- matches bracket.
-`` Takes to last jump/char search -> ignore ``
+```` Takes to last jump/char search
 
-cw, v/s ciw -- w is a option, i is a text object. ciw command can be repeated with .
+- cw, v/s ciw -- w is a option, i is a text object. ciw command can be repeated with .
 
 - :r file1.txt
 - :r! command
@@ -224,19 +223,17 @@ g,
 :changes
 
 
-Marks 
------
-'
+## Marks 
+`'`
 
 /pattern1/ mark a -- Marks a at the given pattern
 'am/pattern2/-1 -- Move the marked line just before the pattern2
 
-'[ and '] -- delimit/marks the region which was last edited
-'< and >' -- delimit/marks the visual selected region
+`'[` and `']` -- delimit/marks the region which was last edited
+`'<` and `>'` -- delimit/marks the visual selected region
 :help marks
 
-Registers 
----------
+## Registers 
 Data is code
 - " register
 - 0 register -- 0-9 registers.
@@ -271,7 +268,6 @@ Data is code
 - :args -- gonna print out all the parameters/arguments
 - :argdo :%s/Math/MyMath/g | w -> Runs the Macro/substitution on arr the args(files)
 
----
 # Plugins
 #### - Ctrl+p -- To do fuzzy search and open files from a huge number of files
 
