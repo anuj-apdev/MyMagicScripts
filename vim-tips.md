@@ -1,18 +1,19 @@
-Ctrl+e -- Scroll 1 line down with fixed cursor
-Ctrl+y -- Scroll 1 line up with fixed cursor
-Ctrl+d -- Scroll halfpage down with cursor
-Ctrl+f -- Scroll fullpage down with cursor
-Ctrl+u -- Scroll halfpage up with cursor
-Ctrl+b -- Scroll fullpage up with cursor
-L -- Move Cursor to Last line
-M -- Move Cursor to Mid line
-H -- Move cursor to Top line of the screen
+## Vim movements
+- Ctrl+e -- Scroll 1 line down with fixed cursor
+- Ctrl+y -- Scroll 1 line up with fixed cursor
+- Ctrl+d -- Scroll halfpage down with cursor
+- Ctrl+f -- Scroll fullpage down with cursor
+- Ctrl+u -- Scroll halfpage up with cursor
+- Ctrl+b -- Scroll fullpage up with cursor
+- L -- Move Cursor to Last line
+- M -- Move Cursor to Mid line
+- H -- Move cursor to Top line of the screen
 
-zz -- Move current line w/ cursor to the middle of screen
-z. -- same as above
-zt -- Move current line w/ cursor to the top of screen
-zb -- Move current line w/ cursor to the bottom of screen
-90% -- Move cursor to 90% of file
+- zz -- Move current line w/ cursor to the middle of screen
+- z. -- same as above
+- zt -- Move current line w/ cursor to the top of screen
+- zb -- Move current line w/ cursor to the bottom of screen
+- 90% -- Move cursor to 90% of file
 
 e -- move to end of word
 ge -- reverse of above
@@ -24,12 +25,12 @@ g_ -- reverse of above, i.e. end of line.
 - -- Go up to line start
 0,$ -- move at begining, end of a line
 
-Marks
+## Marks
 mm -- mark m
 'm -- First char of line with mark m
 `m -- exactly at m -- ignore next --> `
 
-use case 
+### use case 
 ---
 qqg_ld$j[^@q -- Macro to delete empty space at enf of the line.
 
@@ -45,7 +46,7 @@ Ctrl+o -- Last jump
 CTRL+^ -- SWITCH BUFFERS
 :e&
 
-Windows command
+## Windows command
 ---
 Ctrl+w - s -- vertical split
 		 v -- hor split
@@ -53,7 +54,7 @@ Ctrl+w - s -- vertical split
 		 o -- Make my current one as Only one windows, ***
 		 c -- close this window
 
-Insert Mode Completion 
+## Insert Mode Completion 
 --- 
 Must be in insert Mode (i,a,c etc)
 Ctrl+n (Also Ctrl+p) -- Auto completion of words
@@ -66,7 +67,7 @@ Command Mode shortcuts
 Ctrl+r = -- evaluate exxpression (Mathematical)
 Ctrl+r " -- Paste currently copied text
 
-Mathematics
+## Mathematics
 ---
 Ctrl_A -- increase number under cursor
 Ctrl_X -- decrease number under cursor
@@ -187,7 +188,7 @@ $ -- Last line in file
 /l -- search l
 :%s//left/gc -- replace last searched item (l here) with left, g=globally, c=confirm before replacing each time.
 
-Tabs
+## Tabs
 ---
 gt
 gT
