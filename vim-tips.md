@@ -104,19 +104,18 @@ d} -- delete entire method/paragraph, blanc line deliniated
 
 cw, v/s ciw -- w is a option, i is a text object. ciw command can be repeated with .
 
-:r file1.txt
-:r! command
-:$r file
-:0r file
-:/pattern/r file
-:normal d5j -- Run this command in norm mode, delete 5 lines below, and reach next line.
-:norm -- runs normal mode command on command line, useful to perform repetable task/macro
-:norm I<a href=" [^ A ><++> </a> -- Adds href tag at selected text.
-:map <leader>p 0yi":mupdf <C-R>" & disown <CR><CR> -- Map Leader p command to - copy the text insode quote in current line, and execute mupdf command with that text on background with disown command so that vim should go on running, and hit carriage return
+- :r file1.txt
+- :r! command
+- :$r file
+- :0r file
+- :/pattern/r file
+- `:normal d5j` -- Run this command in norm mode, delete 5 lines below, and reach next line.
+- `:norm` -- runs normal mode command on command line, useful to perform repetable task/macro
+- `:norm I<a href=" [^ A ><++> </a>` -- Adds href tag at selected text.
+- `:map <leader>p 0yi":mupdf <C-R>" & disown <CR><CR>` -- Map Leader p command to - copy the text insode quote in current line, and execute mupdf command with that text on background with disown command so that vim should go on running, and hit carriage return
 
-
-nnoremap Q !!:$SHELL <cr> -- Map Ctrl_Q to run current line as shell command
-nnoremap <space>L yy:@" <cr> -- Run current line as Vim comand/normal mode
+- nnoremap Q !!:$SHELL <cr> -- Map Ctrl_Q to run current line as shell command
+- nnoremap <space>L yy:@" <cr> -- Run current line as Vim comand/normal mode
 
 > -- indent
 >j -- indent current line and one line below
@@ -160,33 +159,32 @@ w vs W --
 
 "5p -- pastes line deleted in 5th stack/register. While last/recent one is saved on register 1.
 
-regex
------
-/s -- space
-/r -- return/enter/newline
+## regex
 
-Search and Replace together
----
+- /s -> space
+- /r -> return/enter/newline
 
-/xxxx/d -- delete line containing xxx
-/yyy/+d -- delete line next to the one containing yyy 
-/pattern1/,/pattern2/d -- delete line between these 2 patterns, inclusing the line containing pattern
-/pattern1/+,/pattern2/-d
+## Search and Replace together
 
-%s/pattern//gn -- Count number of occurences of pattern. n in the end means -- no-op
+- /xxxx/d -- delete line containing xxx
+- /yyy/+d -- delete line next to the one containing yyy 
+- /pattern1/,/pattern2/d -- delete line between these 2 patterns, inclusing the line containing pattern
+- /pattern1/+,/pattern2/-d
 
-. -- redo last operation, in normal mode
-. -- Also stands for current line in comand mode
-$ -- Last line in file
-% -- 1,$ -- Entire file
-`t -- position of mark t ignore next--> `
+- %s/pattern//gn -- Count number of occurences of pattern. n in the end means -- no-op
 
-/{pattern}[/] -- then next line where pattern matehces.
-?{pattern}[/] -- then previous line where pattern matehces.
-:help range
+- `.` -> redo last operation, in normal mode
+- `.` -> Also stands for current line in comand mode
+- `$` -> Last line in file
+- `%` -> 1,$ -> Entire file
+- ``t` -> position of mark t.
 
-/l -- search l
-:%s//left/gc -- replace last searched item (l here) with left, g=globally, c=confirm before replacing each time.
+- /{pattern}[/] -- then next line where pattern matehces.
+- ?{pattern}[/] -- then previous line where pattern matehces.
+- :help range
+
+- /l -- search l
+- :%s//left/gc -- replace last searched item (l here) with left, g=globally, c=confirm before replacing each time.
 
 ## Tabs
 ---
@@ -203,8 +201,8 @@ Terminal Buffer
 
 vim args
 ---
-## -- all args
-:args = **/*.py -- Add all py files in arg -> ignore **/**.
+`##` -> all args
+- :args = **/*.py -- Add all py files in arg -> ignore **/**.
 
 :vim /TODO/ ## -- Serch TODO in all files in my args list
 :cn and :cp -- to navigate between args. Next and Previous
@@ -240,70 +238,70 @@ Marks
 Registers 
 ---------
 Data is code
-" register
-0 register -- 0-9 registers.
-""p -- paste deleted text.
-03wcWmy good^[j -- from 0(begining of line) jump to 3words(3w) and change a Word(3W) to "my good", then escape(^[) and come to next line(j).
-""ay$ -- copy current line to register a
-@a -- replay the command/macro which was stored in register a
-@@ -- reoplay last run macro
-6@@ -- replay the macro 6 times
+- " register
+- 0 register -- 0-9 registers.
+- ""p -- paste deleted text.
+- `03wcWmy good^[j` -> from 0(begining of line) jump to 3words(3w) and change a Word(3W) to "my good", then escape(`^[`) and come to next line(j).
+`""ay$` -> copy current line to register a
+- @a -> replay the command/macro which was stored in register a
+- @@ -> reoplay last run macro
+- 6@@ -> replay the macro 6 times
 
-COM 
+
+`COM`  -> Count Operation Motion.
+
+- :r! file
+- :.!figlet -- run figlet with pushing this line as standard input as current line, and pastes the output on the cursor
+- !!{cmd} -- normal mode
+- noremap Q !!sh<CR> -- Thus runs the command in current line on she.l, with Q as a new command
+
+### Random ,and Complex command
+`+2,/^vim \*.scm/s/^#\(\d\+\)/\="#"  .strftime("%Y %b %d %X", submatch(1))/`
+`-16,-14cp.`
+
+## Macros -- Record and replay (Can use any character in place of q below)
+- q<name of macro> for eg
+- qq -> record a macro and save it to q
+- q -> stop recording Macros
+- @q -> replay macro q
+- 4@q -> Replay the macro 4 times
+
+## Argument List
+- :arg `find lib spec -name '*.rb'` -> put output array of shell command on the args list.
+- :args -- gonna print out all the parameters/arguments
+- :argdo :%s/Math/MyMath/g | w -> Runs the Macro/substitution on arr the args(files)
+
 ---
-Count Operation Motion.
+# Plugins
+#### - Ctrl+p -- To do fuzzy search and open files from a huge number of files
 
-:r! file
-:.!figlet -- run figlet with pushing this line as standard input as current line, and pastes the output on the cursor
-!!{cmd} -- normal mode
-noremap Q !!sh<CR> -- Thus runs the command in current line on she.l, with Q as a new command
-
-Random ,and Complex command
-+2,/^vim \*.scm/s/^#\(\d\+\)/\="#"  .strftime("%Y %b %d %X", submatch(1))/
--16,-14cp. -- dot stands for here.
-
-Macros -- Record and replay (Can use any character in place of q below)
-q<name of macro> for eg
-qq -- record a macro and save it to q
-q -- stop recording Macros
-@q -- replay macro q
-4@q -- Replay the macro 4 times
-
-Argument List
-:arg `find lib spec -name '*.rb'` -- put output array of shell command on the args list.
-:args -- gonna print out all the parameters/arguments
-:argdo :%s/Math/MyMath/g | w -- Runs the Macro/substitution on arr the args(files)
-
-Plugins
-Ctrl+p -- To do fuzzy search and open files from a huge number of files
-
-Surrounding 
+#### - Surrounding 
 ds" -- Delete surrounding double quotes
 cs'" -- change Surrounding single quote to double
 ysiw" -- add surrounding double-quote around ineer word
 cst<h2> -- can change surrounding tag lets say <p> to <h2>
 
-ReplacewithRegister
+#### - ReplacewithRegister
 yiw -- copy the word
 griw -- Will replace the inner word with buffer word (go replace)
 
 TitleCase
 gti' -- Toggle case inside '
 
-goSort
+#### - goSort
 gsip -- sort inner paragraph
 
-System-Copy
+#### - System-Copy
 cpip -- copies to system clipboard
 
-Inner Indent
+#### - Inner Indent
 cmii -- comment inner indent
 
-Entire
+#### - Entire
 dae -- delete entire thing
 cmae -- comment entire thing
 
-Someone's cool vimrc file -- 
+## Someone's cool vimrc file -- 
 
 " 2) force minimun window width
 set winwidth=110
