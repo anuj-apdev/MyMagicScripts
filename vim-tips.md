@@ -89,19 +89,19 @@ Ctrl+w - s -- vertical split
 - c/oth -- Search oth and delete everything till that oth from current cursor
 - c6j -- Change (delete) 6 lines down.
 
-f, F, t, T, /, ? -- Searches occurence. 
-f -- takes to occurence
-F -- Same as above, inverse order
-t -- Before the occurence of the char
-T -- Same as above, inverse order
-; -- to move forward on char searches
-, -- to move backward
+- f, F, t, T, /, ? -- Searches occurence. 
+- f -- takes to occurence
+- F -- Same as above, inverse order
+- t -- Before the occurence of the char
+- T -- Same as above, inverse order
+- ; -- to move forward on char searches
+- , -- to move backward
+- 
+- d} -- delete entire method/paragraph, blank line deliniated
+- % -- matches bracket.
+- `` Takes to last jump/char search
 
-d} -- delete entire method/paragraph, blanc line deliniated
-% -- matches bracket.
-```` Takes to last jump/char search
-
-- cw, v/s ciw -- w is a option, i is a text object. ciw command can be repeated with .
+- cw, v/s ciw -> w is a option, i is a text object. ciw command can be repeated with .
 
 - :r file1.txt
 - :r! command
@@ -116,47 +116,47 @@ d} -- delete entire method/paragraph, blanc line deliniated
 - nnoremap Q !!:$SHELL <cr> -- Map Ctrl_Q to run current line as shell command
 - nnoremap <space>L yy:@" <cr> -- Run current line as Vim comand/normal mode
 
-> -- indent
->j -- indent current line and one line below
-x -- delete current char
-r -- replace current char
-R -- delete current word
-tabe -- OPen new tab
-E -- Open Explorer/directory view
-b crazy.md -- Open file
-:w !sudo tee %
-10| -- Jump to 10th letter
-vspl -- vertical split
-nohl -- no highlight
-set cursorline        # highlight current line
-set cursorcolumn # highlight current column
-:g/Hello/s/this/that -- Search fir hello, and replace this to that only on those lines.
-:colorcheme 
-c -- delete/change (selected text) command
-ciw -- change inside word.
-:%&g -- repeat the last command globally(on all lines)
-g; -- Goto Last edited line
-g, -- Reverse of g;
-g# -- Search and move to last appearance of thw rord under cursor
-g* -- Search and move to next appearance of thw rord under cursor
-H -- Goto the top of the file
-gwap -- Linting line width to 80 columns.
-gqaw -- does same as before, cursor is moved to the begining of paraghaph.
-1gqG -- Do same as above, for all paragraph. (You have to be at last paragraph)
-:set spell
-nmap <space>sp mm[s1z-`m -- ignore next --> `
-
-J -- to Join next line with current with space.
-gJ -- Join w/o space
-gu -- Lower Case
-gU -- Upper case
-~ -- Toggle Case
-= -- indent
-> -- shift right
-< -- shift left
-w vs W -- 
-
-"5p -- pastes line deleted in 5th stack/register. While last/recent one is saved on register 1.
+- > -- indent
+- >j -- indent current line and one line below
+- x -- delete current char
+- r -- replace current char
+- R -- delete current word
+- tabe -- OPen new tab
+- E -- Open Explorer/directory view
+- b crazy.md -- Open file
+- :w !sudo tee %
+- 10| -- Jump to 10th letter
+- vspl -- vertical split
+- nohl -- no highlight
+- set cursorline        # highlight current line
+- set cursorcolumn # highlight current column
+- :g/Hello/s/this/that -- Search fir hello, and replace this to that only on those lines.
+- :colorcheme 
+- c -- delete/change (selected text) command
+- ciw -- change inside word.
+- :%&g -- repeat the last command globally(on all lines)
+- g; -- Goto Last edited line
+- g, -- Reverse of g;
+- g# -- Search and move to last appearance of thw rord under cursor
+- g* -- Search and move to next appearance of thw rord under cursor
+- H -- Goto the top of the file
+- gwap -- Linting line width to 80 columns.
+- gqaw -- does same as before, cursor is moved to the begining of paraghaph.
+- 1gqG -- Do same as above, for all paragraph. (You have to be at last paragraph)
+- :set spell
+- nmap <space>sp mm[s1z-`m -- ignore next --> `
+- 
+- J -- to Join next line with current with space.
+- gJ -- Join w/o space
+- gu -- Lower Case
+- gU -- Upper case
+- ~ -- Toggle Case
+- = -- indent
+- > -- shift right
+- < -- shift left
+- w vs W -- 
+- 
+- "5p -- pastes line deleted in 5th stack/register. While last/recent one is saved on register 1.
 
 ## regex
 
@@ -187,51 +187,49 @@ w vs W --
 
 ## Tabs
 ---
-gt
-gT
-:tabc
-:tabe
-:tabo
+- gt
+- gT
+- :tabc
+- :tabe
+- :tabo
 
 Terminal Buffer
 ---
-:set shell=/usr/bin/zsh
-:bo 15sp +te
+- :set shell=/usr/bin/zsh
+- :bo 15sp +te
 
 vim args
 ---
-`##` -> all args
+- `##` -> all args
 - :args = **/*.py -- Add all py files in arg -> ignore **/**.
 
-:vim /TODO/ ## -- Serch TODO in all files in my args list
-:cn and :cp -- to navigate between args. Next and Previous
-@: -- repeat that move (above)
-:cdo s/TODO/DONE/g -- Change for every occurence of this and every line.
+- :vim /TODO/ ## -- Serch TODO in all files in my args list
+- :cn and :cp -- to navigate between args. Next and Previous
+- @: -- repeat that move (above)
+- :cdo s/TODO/DONE/g -- Change for every occurence of this and every line.
 
-ctags
----
-Ctrl_]
-Ctrl_t
+## ctags
+- Ctrl_]
+- Ctrl_t
 
-Jumps & Changes
----
-:jumps
-Ctrl_o
-Ctrl_i
-g:
-g,
-:changes
+## Jumps & Changes
+- :jumps
+- Ctrl_o
+- Ctrl_i
+- g:
+- g,
+- :changes
 
 
 ## Marks 
-`'`
+- `'`
 
-/pattern1/ mark a -- Marks a at the given pattern
-'am/pattern2/-1 -- Move the marked line just before the pattern2
-
-`'[` and `']` -- delimit/marks the region which was last edited
-`'<` and `>'` -- delimit/marks the visual selected region
-:help marks
+- /pattern1/ mark a -- Marks a at the given pattern
+- 'am/pattern2/-1 -- Move the marked line just before the pattern2
+- 
+- `'[` and `']` -- delimit/marks the region which was last edited
+- `'<` and `>'` -- delimit/marks the visual selected region
+- :help marks
 
 ## Registers 
 Data is code
@@ -245,7 +243,7 @@ Data is code
 - 6@@ -> replay the macro 6 times
 
 
-`COM`  -> Count Operation Motion.
+### `COM`  -> Count Operation Motion.
 
 - :r! file
 - :.!figlet -- run figlet with pushing this line as standard input as current line, and pastes the output on the cursor
@@ -384,7 +382,7 @@ set path+=**					" Searches current directory recursively.
 set wildmenu	
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors
+### " => Colors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi LineNr ctermfg=242
 hi CursorLineNr ctermfg=15
@@ -399,20 +397,18 @@ hi Statement ctermfg=3
 :1,5!column -t -> Change line number 1-5 into columnar style formatting.
 
 
-Folding
----
-Folding
-fdc
-fen
-fdm
-zf
-za
-zi
-zm, zM, zr, zR, zo, zc
+### Folding
+- Folding
+- fdc
+- fen
+- fdm
+- zf
+- za
+- zi
+- zm, zM, zr, zR, zo, zc
 
-path
----
-gf -> goto file
-:set path+=lib/
-<c-w><c-f> -> open with a split
-gd -> goto Declaration
+### path
+- gf -> goto file
+- :set path+=lib/
+- <c-w><c-f> -> open with a split
+- gd -> goto Declaration
